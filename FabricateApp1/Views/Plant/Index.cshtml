@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<FabricateApp1.Models.PlantReorderDetails>
+@{
+    ViewBag.Title = "PlantReorderDetails=Index";
+    Layout= "~/Views/Shared/_Afterlogin.cshtml";
+}
+<center>
+<p>
+    @Html.ActionLink("Add Parts","AddParts") |
+    @Html.ActionLink("View Reorder","Index") |
+    @Html.ActionLink("Update","UpdateObj") |
+    @Html.ActionLink("Put Min and Max","Putminmax")
+</p>
+
+<h2>Plant Reorder Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlantReorderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReorderStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReorderDate)
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model) {
+   <tr>
+<td>
+    @Html.DisplayFor(modelItem => item.PartId)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.PlantReorderId)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.PartDetails)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.ReorderStatus)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.ReorderDate)
+</td>
+</tr>
+}
+</table>
+</center>

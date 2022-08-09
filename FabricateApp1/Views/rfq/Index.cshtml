@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<FabricateApp1.Models.Rfq>
+@{
+    ViewBag.Title = "RFQ Index";
+    Layout= "~/Views/Shared/_Afterlogin.cshtml";
+}
+<p>
+    @Html.ActionLink("Get Rfq details by Id","GetbyId") |
+    @Html.ActionLink("Get Feedback","Get Feedback") 
+</p>
+<h2>Rfq Details</h2>
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.partName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timetoSupply)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specification)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+<td>
+    @Html.DisplayFor(modelItem => item.partName)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.Quantity)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.timetoSupply)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.Specification)
+</td>
+</tr>
+}
+</table>

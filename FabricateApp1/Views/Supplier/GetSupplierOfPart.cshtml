@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<FabricateApp1.Models.Supplier>
+@{
+    ViewBag.Title = "Get Supplier of Part";
+    Layout= "~/Views/Shared/_Afterlogin.cshtml";
+}
+<center>
+<h2>Supplier of Parts</h2>
+<p>
+    @Html.ActionLink("Create New","AddSupplier")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+<td>
+    @Html.DisplayFor(modelItem => item.name)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.email)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.phone)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.location)
+</td>
+</tr>
+}
+</table>
+<p>
+    @Html.ActionLink("Return to Supplier Index","Index")
+</p>
+</center>

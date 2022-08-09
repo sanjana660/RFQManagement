@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<FabricateApp1.Models.Part>
+@{
+    ViewBag.Title = "Part Index";
+    Layout= "~/Views/Shared/_Afterlogin.cshtml";
+}
+<center>
+<h2>Available Parts</h2>
+<p>
+    @Html.ActionLink("Add Parts","AddParts") |
+    @Html.ActionLink("Add Part Reorder","AddPartReorder") |
+    @Html.ActionLink("Reorder Details","Index")
+    
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PartId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartSpecification)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+<td>
+    @Html.DisplayFor(modelItem => item.PartId)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.PartDescription)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.PartSpecification)
+</td>
+</tr>
+}
+</table>
+</center>

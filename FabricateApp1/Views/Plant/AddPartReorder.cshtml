@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model FabricateApp1.Models.PlantReorderDetails
+@{
+    ViewBag.Title = "Add Supplier";
+    Layout= "~/Views/Shared/_Afterlogin.cshtml";
+}
+<div>
+    @Html.ActionLink("Back to Part Reorder Details","Index")
+</div>
+<h2>Add Part Reorder Details</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizaontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new{@class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.PartDetails, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PartDetails, new { htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.PartDetails, "Part Details", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReorderStatus, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReorderStatus, new { htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.ReorderStatus, "ReorderStatus", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReorderDate, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReorderDate, new { htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.ReorderDate, "Reorder Date", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+}

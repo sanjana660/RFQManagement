@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model FabricateApp1.Models.Part
+@{
+    ViewBag.Title = "Add Supplier";
+    Layout= "~/Views/Shared/_Afterlogin.cshtml";
+}
+<div>
+    @Html.ActionLink("Back to Part Details","Index1")
+</div>
+<h2>Add Part Details</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizaontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new{@class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.PartDescription, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PartDescription, new { htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.PartDescription, "Part Description", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PartSpecification, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PartSpecification, new { htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.PartSpecification, "Part Specification", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+}
