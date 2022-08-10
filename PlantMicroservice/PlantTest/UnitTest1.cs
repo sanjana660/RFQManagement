@@ -1,15 +1,14 @@
-using System;
-using Xunit;
-using Moq;
-using System.Collections.Generic;
-using PlantMicroservice.Models;
 using NUnit.Framework;
-using System.Threading.Tasks;
+using Moq;
+using PlantMicroservice.Models;
 using PlantMicroservice.Repository;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
 
 namespace PlantTest
 {
-    public class UnitTest1
+    public class Tests
     {
         List<PlantReorderDetails> dtls;
         Part pts;
@@ -22,18 +21,17 @@ namespace PlantTest
                 {
                     PlantReorderId = 501,
                     PartId = 1,
-                    PartDetails = "Cement",
+                    PartDetails = "Plows",
                     ReorderStatus = "Requested",
-                    ReorderDate = Convert.ToDateTime("2022 - 02 - 04")
+                    ReorderDate = Convert.ToDateTime("2022 - 08 - 10")
                 };
             }
-
             pts = new Part();
             {
                 new Part()
                 {
                     PartId = 1,
-                    PartDescription = "Cement",
+                    PartDescription = "Plows",
                     PartSpecification = "best quality",
                     StockInHand = 47
 
@@ -48,7 +46,19 @@ namespace PlantTest
 
             mock.Setup(p => p.ViewPartsReOrder()).ReturnsAsync(dtls);
             List<PlantReorderDetails> a = await mock.Object.ViewPartsReOrder();
-            Assert.AreEqual(a.Count, dtls.Count);
+            Assert.That(dtls.Count, Is.EqualTo(a.Count));
+        }
+
+        [TestCase(1)]
+        public async Task ViewStockInHand_GetsStock(int PartId)
+        {
+            Mock<IPlantRepo> mock = new Mock<IPlantRepo>();
+
+            mock.Setup(p => p.ViewStockInHand(PartId)).ReturnsAsync(pts);
+           
+
+            Part a = await mock.Object.ViewStockInHand(PartId);
+            Assert.IsNotNull(a);
         }
 
     }
